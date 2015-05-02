@@ -1,0 +1,9 @@
+<input type="hidden" name="ranking_out_meta_nonce" value="{{ ranking_out_meta_nonce }}" />
+<div id="ranking_cast_out" class="cast_box">
+	{% for id, data in krc_cast_out_arr %}
+		<dl class="ranking_cast" id="{{id}}">
+			<dt>{{ data.krc_name }}</dt>
+			<dd><img src="{{ data.krc_cast_screens }}" width="100" class="cast_photo" /></dd>
+		</dl>
+	{% endfor %}
+</div>

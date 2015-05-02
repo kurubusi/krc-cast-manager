@@ -1,0 +1,189 @@
+.postbox .hndle {
+	padding-left: 10px;
+}
+#krc-schedule-out .inside {
+	margin-bottom: 0;
+}
+
+.cast_box {
+	position: relative;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.cast_box .schedule_cast {
+	list-style: none;
+	display: inline-block;
+	width: 80px;
+	margin: 0 3px 3px 0;
+	border: solid 1px #f6f6f6;
+	background-color: #fafafa;
+	padding: 1px 5px 5px 5px;
+}
+.cast_box .schedule_cast dt {
+	font-weight: bold;
+	text-align: center;
+}
+.cast_box .schedule_cast dd {
+	margin: 0;
+}
+.cast_box .schedule_cast dd img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+
+
+
+.cast_box .cast_photo {
+	display: inline-block;
+	margin: 0px;
+	padding: 2px;
+	position: relative;
+	background: #efefef;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.schedule_cast {
+	cursor: move;
+}
+
+#schedule_cast_out {
+	min-height: 165px;
+	padding: 15px;
+	margin: 20px auto 0px auto;
+	border: dashed 2px #ccc;
+	background-color: #ffffff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+#schedule_cast_out:before {
+	content: "欠勤キャストはこちら";
+	position: absolute;
+	top: 5%;
+	left: 3%;
+	font-size: 32px;
+	line-height: 40px;
+	color: #aaaaaa;
+	
+}
+#schedule_cast_in {
+	min-height: 165px;
+	padding: 15px;
+	margin: 20px auto 5px auto;
+	border: dashed 2px #ccc;
+	background-color: #ffffff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+}
+#schedule_cast_in:before {
+	content: "カレンダーを選択して出勤キャストをドロップして下さい。";
+	position: absolute;
+	top: 5%;
+	left: 3%;
+	font-size: 32px;
+	line-height: 40px;
+	color: #aaaaaa;
+}
+.schedule_cast {
+	margin: 0px 3px;
+	display: inline-block;
+	width: auto;
+	width: 80px;
+	z-index: 1;
+	position: relative;
+}
+
+
+.cast_schedule_photo	{
+	display: inline-block;
+	width: 70px;
+	margin: 0 5px 0 0;
+}
+.cast_schedule_photo dd	{
+	margin: 0;
+}
+.cast_schedule_photo img	{
+	display: block;
+	width: 100%;
+}
+
+.schedule_time {
+	font-size: 12px;
+	line-height: 12px;
+	margin-top: 2px!important;
+	padding: 3px;
+	color: #fff;
+	background-color: #0078ae;
+	text-align: center;
+}
+
+.time_input {
+	
+}
+.time_popup {
+	text-align: center;
+	font-size: 95%;
+}
+.time_popup label {
+	font-weight: normal;
+}
+.time_popup > dl {
+	background-color: #eeeeee;
+	padding: 1px 0 3px 0;
+	margin: 4px 0;
+}
+.time_popup select {
+}
+.submit {
+	display: block;
+	height: auto;
+}
+#rest-schedule, #save-schedule {
+	display: inline-block;
+	font-size: 18px;
+	text-align: center;
+	padding: 5px 15px;
+	height: auto;
+	
+}
+#rest-schedule {
+	background: #D6D6D6;
+	border-color: #A4A4A4;
+	-webkit-box-shadow: inset 0 1px 0 rgba(224,224,224,.5),0 1px 0 rgba(0,0,0,.15);
+	box-shadow: inset 0 1px 0 rgba(224, 224, 224, 0.5),0 1px 0 rgba(0,0,0,.15);
+}
+.h_box {
+	width: 100%;
+	overflow: hidden;
+}
+.h_box h2 {
+	float: left;
+}
+.h_box .schedule_button {
+	float: right;
+}
+#krc_schedule_rest {
+	font-weight: bold;
+	font-size: 22px;
+	color: #777;
+	padding-left: 5px;
+}
+.time_input {
+	//display: none;
+}
