@@ -1,0 +1,14 @@
+<input type="hidden" name="photo_meta_nonce" value="{{photo_meta_nonce}}" />
+<div id="krc_mui_button" class="wp-core-ui">
+	<div id='krc_photo_upload_panel' >
+		<input type='button' value='キャスト画像アップロード' class='widefat button krc_upload_btn' id='' />
+		<div class='krc_preview_box' id='krc_photo__panel' >
+			{% for item in krc_cast_screens %}
+			<li><img class='krc_img_prev cast_photo' style='' src='{{item}}' /><input class='krc_img_prev_hidden' type='hidden' name='h_krc_cast_screens[]' value='{{item}}' /></li>
+			{% endfor %}
+		</div>
+		<input type='button' value='キャスト画像アップロード' class='widefat button krc_upload_btn' id='' />
+	</div>
+</div>
+
+
