@@ -1,0 +1,91 @@
+#order-post-type #sortable {
+	list-style-type: none;
+}
+#order-post-type #sortable ul { 
+	list-style: none; 
+	width: 100%;
+	overflow: hidden;
+	padding: 0;
+}
+#order-post-type #sortable li { 
+	margin: 0px 2px 2px 0;
+	padding: 0 2px 2px 2px;
+	text-align: center;
+	position: relative;
+	background: #fafafa;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	max-width: 80px;
+	display: inline-block;
+	cursor: move;
+}
+#order-post-type #sortable li .cast_photo { 
+	width: 100%;
+	height: auto;
+	display: block;
+}
+#order-post-type #sortable li dl { 
+	padding: 0;
+	margin: 0;
+}
+#order-post-type #sortable li dl dd { 
+	margin: 0;
+}
+
+#order-post-type #sortable li.placeholder{
+	border: none;
+	background: none!important;
+}
+
+#icon-settings {
+	background-image:url("../images/admin-icon-settings.gif");background-repeat:no-repeat;
+}
+h2.subtitle {
+	font-size: 15px; font-style: italic; font-weight: bold
+}
+.wrap .example { 
+	color: #666666; font-size: 11px; font-weight: bold
+}
+
+#cpt_info_box {
+	padding: 0 10px; border: 1px dashed #6aadcc; background-color: #FFF; margin-top: 10px;
+	-webkit-box-shadow: 1px 1px 7px rgba(50, 50, 50, 0.17);
+	-moz-box-shadow:    1px 1px 7px rgba(50, 50, 50, 0.17);
+	box-shadow:         1px 1px 7px rgba(50, 50, 50, 0.17);
+}
+#cpt_info_box p {
+	font-size: 12px
+}
+#cpt_info_box a {
+	text-decoration: none
+}
+#cpt_info_box #donate_form {
+	float: right;    padding: 10px 0 17px;    text-align: center;    width: 100%;
+}
+.menu_pto {
+	margin-right: 4px; display: inline; vertical-align: middle; margin-top: -1px;
+}  
+
+#p_right {
+	float: right; width: 210px; background-color:#f5f5f5; border-left: 1px dashed #dedede; border-right: 1px dashed #dedede
+}
+.p_s_item {
+	float: right; padding: 0px 5px; margin-top: 15px; margin-bottom: 5px; 
+}
+.p_s_item.s_gp {
+	padding-top: 2px; margin-left: 5px
+}
+
+.clear {
+	clear: both
+}
+.ui-sortable-handle {
+	
+}
