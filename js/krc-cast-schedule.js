@@ -28,16 +28,18 @@ $jq(document).ready(function () {
 		'closeText': true,
 		'onSelect': function (chosen, inst) {
 			//PHPに初期データ取りに行く
+			
 			$jq.post( ajaxurl, { action: 'krc_schedule_target_day', 'order': chosen }, function(data, status) {
-				//AJAX共通化した方のコードで書くか　　本の・・ あとで
 				var cast_arr = $jq.parseJSON(data);
 				$jq('#schedule_cast_out').empty();
 				$jq('#schedule_cast_in').empty();
 				$jq('#krc_schedule_rest').remove();
+				
 				if (cast_arr['rest'] == 'rest') {
-					console.log($jq('#schedule_cast_in:before'));
+					//console.log($jq('#schedule_cast_in:before'));
 					$jq('#schedule_cast_in').before('<div id="krc_schedule_rest">■定休日に設定しています</div>');
 				} else {
+					
 					$jq.each(cast_arr['post_in'], function (i, val) {
 						$jq('#schedule_cast_in').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + i + '"><dt>' + val['krc_name'] + '</dt><dd><img src="' + val['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd>' + time_popup + '</dl>');
 						$jq('#item_' + i).find(".fastslow").val(cast_arr['post_in'][i]['fastslow']);

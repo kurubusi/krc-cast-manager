@@ -106,6 +106,7 @@ class Krc_Model_Schedule {
 		);
 		$work = unserialize($day_schedule);
 		$krc_schedule_in_arr = array();
+		$krc_schedule_rest = '';
 		if (is_array($work)) {
 			$work_id_arr = array_keys($work);
 			$args = array(
