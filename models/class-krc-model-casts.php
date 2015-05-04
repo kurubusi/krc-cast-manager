@@ -420,8 +420,11 @@ class Krc_Model_Casts {
 		global $post;
 		
 		if ($column_name == "_krc_cast_screens") {
+			
 			$screens = json_decode(get_post_meta($post->ID, "_krc_cast_screens", true));
-			echo '<a href="post.php?post=' . $post->ID . '&action=edit">' . '<img src="' . esc_url($screens[0]) . '" class="list_cast_photo cast_photo" />' . '</a>';
+			if(isset($screens[0])){
+				echo '<a href="post.php?post=' . $post->ID . '&action=edit">' . '<img src="' . esc_url($screens[0]) . '" class="list_cast_photo cast_photo" />' . '</a>';
+			}
 		} else if ($column_name == "_krc_name") {
 			echo '<a href="post.php?post=' . $post->ID . '&action=edit">' . esc_html(get_post_meta( $post->ID, $column_name, true )) . '</a>';
 		} else if ($column_name == "size") {

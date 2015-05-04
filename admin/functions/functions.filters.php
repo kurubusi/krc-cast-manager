@@ -38,7 +38,7 @@ function of_filter_save_media_upload($data) {
 
     return $data;
 }
-add_filter('of_options_before_save', 'of_filter_save_media_upload');
+//add_filter('of_options_before_save', 'of_filter_save_media_upload');
 
 /**
  * Filter URLs from uploaded media fields and replaces the site URL keywords

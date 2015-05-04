@@ -17,7 +17,7 @@ require_once 'krc-dashboard-manager/class-krc-dashboard-manager.php';
 require_once 'krc-dashboard/class-krc-dashboard.php';
 require_once 'krc-custom-post-manager/class-krc-custom-post-manager.php';
 require_once 'krc-cast-order/class-krc-cast-order.php';
-require_once 'admin/index.php';
+//require_once 'admin/index.php';
 
 
 include_once 'class-krc-template-loader.php';
