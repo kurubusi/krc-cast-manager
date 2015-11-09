@@ -96,8 +96,6 @@ class Krc_Model_Schedule {
 	public function preparation_calendar () {
 		global $post, $post_id, $wpdb;
 		
-		//後出勤時間
-		//吐き出し側は後でいいか
 		
 		$day = str_replace("/", "-", $_POST['order']);
 		
@@ -124,6 +122,7 @@ class Krc_Model_Schedule {
 					'fastslow' => $work[get_the_ID()]['fastslow'],
 					'starttime' => $work[get_the_ID()]['starttime'],
 					'endtime' => $work[get_the_ID()]['endtime'],
+					's_order' => $work[get_the_ID()]['s_order'],
 				);
 			endwhile;
 			wp_reset_postdata();

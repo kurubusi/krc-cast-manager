@@ -96,29 +96,16 @@ class Krc_Model_Ranking {
 		$data['ranking_in_meta_nonce'] = wp_create_nonce('ranking_in_meta_nonce');
 		$this->rankings = json_decode(get_post_meta($post_id, "_krc_cast_rankings", true));
 		$casts = array();
-		//print_r($this->rankings);
 		if (is_array($this->rankings)) {
-			$args = array(
-				'post_type'     =>  $this->cast_post_type,
-				'post__in' => $this->rankings, 
-				'posts_per_page' => -1,
-				'orderby' => 'post__in'
-			);
-			$the_query = new WP_Query($args);
-			//echo '<pre>';
-			//print_r($the_query);
-			//echo '</pre>';
-			while ( $the_query->have_posts() ) : $the_query->the_post();
-				$photo = json_decode(post_custom('_krc_cast_screens'));
-				$casts[get_the_ID()] = array(
-					'krc_name' => (string) esc_html(post_custom('_krc_name')),
+			foreach ($this->rankings as $key => $id) {
+				$photo = json_decode(get_post_meta($id, '_krc_cast_screens', true));
+				$casts[$id] = array(
+					'krc_name' => (string) esc_html(get_post_meta($id, '_krc_name', true)),
 					'krc_cast_screens' => (string) esc_url($photo[0])
 				);
-			endwhile;
-			wp_reset_postdata();
+			}
 		}
 		$data['krc_cast_in_arr'] = $casts;
-		
 		echo $this->template_parser->render( 'ranking_in.html', $data );
 	}
 	

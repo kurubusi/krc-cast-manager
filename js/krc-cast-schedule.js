@@ -30,7 +30,9 @@ $jq(document).ready(function () {
 			//PHPに初期データ取りに行く
 			
 			$jq.post( ajaxurl, { action: 'krc_schedule_target_day', 'order': chosen }, function(data, status) {
-				var cast_arr = $jq.parseJSON(data);
+				var cast_arr = $jq.parseJSON(data),
+						post_in_sort = [];
+				
 				$jq('#schedule_cast_out').empty();
 				$jq('#schedule_cast_in').empty();
 				$jq('#krc_schedule_rest').remove();
@@ -41,11 +43,24 @@ $jq(document).ready(function () {
 				} else {
 					
 					$jq.each(cast_arr['post_in'], function (i, val) {
+						post_in_sort[val['s_order']] = i;
+					});
+					
+					
+					$jq.each(post_in_sort, function (i, val) {
+						$jq('#schedule_cast_in').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + val + '"><dt>' + cast_arr['post_in'][val]['krc_name'] + '</dt><dd><img src="' + cast_arr['post_in'][val]['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd>' + time_popup + '</dl>');
+						$jq('#item_' + val).find(".fastslow").val(cast_arr['post_in'][val]['fastslow']);
+						$jq('#item_' + val).find(".starttime").val(cast_arr['post_in'][val]['starttime']);
+						$jq('#item_' + val).find(".endtime").val(cast_arr['post_in'][val]['endtime']);
+					});
+					/*
+					$jq.each(cast_arr['post_in'], function (i, val) {
 						$jq('#schedule_cast_in').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + i + '"><dt>' + val['krc_name'] + '</dt><dd><img src="' + val['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd>' + time_popup + '</dl>');
 						$jq('#item_' + i).find(".fastslow").val(cast_arr['post_in'][i]['fastslow']);
 						$jq('#item_' + i).find(".starttime").val(cast_arr['post_in'][i]['starttime']);
 						$jq('#item_' + i).find(".endtime").val(cast_arr['post_in'][i]['endtime']);
 					});
+					*/
 				}
 				$jq.each(cast_arr['post_not_in'], function (i, val) {
 					$jq('#schedule_cast_out').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + i + '"><dt>' + val['krc_name'] + '</dt><dd><img src="' + val['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd></dl>');
@@ -90,15 +105,18 @@ $jq(document).ready(function () {
 		var post_arr = {};
 		$jq.each($jq("#schedule_cast_in").sortable("toArray"), function(i, val) {
 			id = val.replace(/item_/g,'');
+			//console.log(i);
 			post_arr[id] = {
 				'fastslow': $jq('#' + val + ' .fastslow').val(),
 				'starttime': $jq('#' + val + ' .starttime').val(),
 				'endtime': $jq('#' + val + ' .endtime').val(),
+				's_order': i
 			};
 		});
+		
 		$jq('#krc_schedule_rest').remove();
 		$jq.post( ajaxurl, { action:'krc_schedule_update', order: post_arr, day: $jq("#schedule_target_day").val() }, function(data, status) {
-			$jq("#ajax-response").html('<div class="message updated fade"><p>スケジュールの変更する</p></div>');
+			$jq("#ajax-response").html('<div class="message updated fade"><p>スケジュールを変更致しました。</p></div>');
 			$jq("#ajax-response div").delay(3000).hide("slow");
 		});
 	});
