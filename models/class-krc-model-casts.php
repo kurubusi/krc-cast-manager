@@ -448,15 +448,10 @@ class Krc_Model_Casts {
 	//キャストの投稿画面だったらカテゴリの自動並べ替えを止める
 	public function krc_switch ($args, $post_id = null) {
 		global $post;
-		
-		//if (isset($args['checked_ontop'])) {
-			if ($post->post_type == $this->post_type){
-				if (isset($args['checked_ontop']) && $args['checked_ontop'] !== false){ 
-					$args['checked_ontop'] = false;
-				}
-				return $args;
-			}
-		//}
+		if ($post->post_type == $this->post_type){
+			$args['checked_ontop'] = false;
+		}
+		return $args;
 	}
 	
 	
