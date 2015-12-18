@@ -34,6 +34,7 @@ class Script_Controller {
 		wp_register_style('CPTStyleSheets', plugins_url('css/cpt.css', dirname(__FILE__)));
 		wp_enqueue_style( 'CPTStyleSheets');
 		
+		wp_enqueue_script('jquery-touch-punch');
 		
 		wp_register_script('krc_cast_order', plugins_url('js/krc-cast-order.js', dirname(__FILE__)), array("jquery"));
 		wp_enqueue_script('krc_cast_order');

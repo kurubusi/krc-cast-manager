@@ -66,10 +66,6 @@ class Krc_Opt {
 			if ($post_type_name == 'reply' || $post_type_name == 'topic') { continue; }
 			if ($post_type_name == 'krc_cast') {
 				add_submenu_page('edit.php?post_type=krc_cast', __('表示順管理', 'krc'), __('表示順管理', 'krc'), 'publish_posts', 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
-			} else {
-				if (!is_post_type_hierarchical($post_type_name)) {
-					add_submenu_page('edit.php?post_type='.$post_type_name, __('Re-Order', 'krc'), __('Re-Order', 'krc'), 'publish_posts', 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
-				}
 			}
 		}
 	}
