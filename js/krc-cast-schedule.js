@@ -10,6 +10,7 @@ $jq(document).ready(function () {
 			today = year  + '/' + month + '/' + day;
 	
 	var time_popup = '<dd class="time_input"><div class="time_popup"><dl><dt><label for="遅早表記">遅早表記</label></dt><dd><select name="fastslow" class="fastslow"><option value="0">指定無</option><option value="早番">早番</option><option value="中番">中番</option><option value="遅番">遅番</option></select></dd></dl><dl><dt><label for="時間表記">時間表記</label></dt><dd><select name="starttime" class="starttime"><option value="0">指定無</option>';
+	time_popup += '<option value="OPEN">OPEN</option>';
 	for (var i = 10; i <= 26; i++) {
 		time_popup += '<option value="' + i + '時">' + i + '時</option>';
 	}
@@ -17,6 +18,7 @@ $jq(document).ready(function () {
 	for (var i = 10; i <= 26; i++) {
 		time_popup += '<option value="' + i + '時">' + i + '時</option>';
 	}
+	time_popup += '<option value="LAST">LAST</option>';
 	time_popup += '</select></dd></dl></div></dd>';
 	
 	
