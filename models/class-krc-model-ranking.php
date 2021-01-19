@@ -10,7 +10,7 @@ class Krc_Model_Ranking {
 	
 	public function __construct ($template_parser) {
 		$this->post_type = 'krc_ranking';
-		$this->cast_post_type = 'krc_cast';
+		$this->cast_post_type = 'cast';
 		$this->error_message = "";
 		$this->template_parser = $template_parser;
 		
@@ -55,7 +55,7 @@ class Krc_Model_Ranking {
 			'supports'              => array('title', 'editor'),
 			'public'                => true,
 			'show_ui'               => true,
-			'show_in_menu'          => 'edit.php?post_type=krc_cast',
+			'show_in_menu'          => 'edit.php?post_type=cast',
 			'show_in_nav_menus'     => true,
 			'show_in_admin_bar'     => false,
 			'publicly_queryable'    => true,

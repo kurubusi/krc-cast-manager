@@ -10,7 +10,7 @@ class Krc_Model_Schedule {
 	
 	public function __construct ($template_parser) {
 		global $wpdb;
-		$this->cast_post_type = 'krc_cast';
+		$this->cast_post_type = 'cast';
 		$this->error_message = "";
 		$this->template_parser = $template_parser;
 		$this->table_name = $wpdb->prefix . 'krc_schedules';
@@ -33,8 +33,8 @@ class Krc_Model_Schedule {
 		foreach( $post_types as $post_type_name ) {
 			if ($post_type_name == 'page') { continue; }
 			if ($post_type_name == 'reply' || $post_type_name == 'topic') { continue; }
-			if ($post_type_name == 'krc_cast') {
-				add_submenu_page('edit.php?post_type=krc_cast', __('スケジュール管理', 'krc'), __('スケジュール管理', 'krc'), 'publish_posts', 'cast-schedule-'.$post_type_name, array(&$this, 'schedule_page') );
+			if ($post_type_name == 'cast') {
+				add_submenu_page('edit.php?post_type=cast', __('スケジュール管理', 'krc'), __('スケジュール管理', 'krc'), 'publish_posts', 'cast-schedule-'.$post_type_name, array(&$this, 'schedule_page') );
 			}
 		}
 		
@@ -48,6 +48,8 @@ class Krc_Model_Schedule {
 			$day = str_replace("/", "-", $_POST['day']);
 			if (is_array($_POST['order'])) {
 				$item = serialize($_POST['order']);
+			} else if ($_POST['order'] == "copy") {
+				$item = $_POST['order'];
 			} else if ($_POST['order'] == "rest") {
 				$item = serialize('rest');
 			} else {
@@ -58,16 +60,31 @@ class Krc_Model_Schedule {
 				$wpdb->prepare("SELECT id FROM $this->table_name WHERE day = %s AND status = %d", $day, 0)
 			);
 			
-			$set_arr = array(
-				'day' => $day,
-				'work' => $item,
-				'status' => 0
-			);
+			
+			if ( $item == 'copy' ) {
+				$yesterday = date('Y-m-d', strtotime('-1 day', strtotime($day)));
+				$yesterday_schedule = $wpdb->get_var(
+					$wpdb->prepare("SELECT work FROM $this->table_name WHERE day = %s AND status = %d", $yesterday, 0)
+				);  //昨日のスケジュール
+				$set_arr = array(
+					'day' => $day,
+					'work' => $yesterday_schedule,
+					'status' => 0
+				);
+			} else {
+				$set_arr = array(
+					'day' => $day,
+					'work' => $item,
+					'status' => 0
+				);
+			}
+			
 			if ($get_id) {
 				$wpdb->update( $this->table_name, $set_arr, array( 'day' => $day), array( '%s', '%s', '%d' ), array( '%s' ) );
 			} else {
 				$wpdb->insert( $this->table_name, $set_arr, array( '%s', '%s', '%d' ) );
 			}
+			
 			
 		}
 		

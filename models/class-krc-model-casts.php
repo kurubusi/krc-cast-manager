@@ -13,7 +13,7 @@ class Krc_Model_Casts {
 	private $error_message;
 	
 	public function __construct ($template_parser) {
-		$this->post_type = 'krc_cast';
+		$this->post_type = 'cast';
 		$this->type_taxonomy = "krc_type";
 		$this->grade_taxonomy = "krc_grade";
 		$this->new_taxonomy = "krc_new";
@@ -44,13 +44,13 @@ class Krc_Model_Casts {
 	//キャストカスタム投稿作成
 	public function create_cast_post_type () {
 		$labels = array(
-			'name'                  => __( 'キャスト管理', 'krc' ),
-			'singular_name'         => __( 'キャスト管理', 'krc' ),
-			'add_new'               => __( 'キャスト新規登録', 'krc' ),
-			'add_new_item'          => __( 'キャスト新規登録', 'krc' ),
-			'edit_item'             => __( 'キャスト登録内容編集', 'krc' ),
-			'new_item'              => __( 'キャスト新規登録', 'krc' ),
-			'all_items'             => __( 'キャスト管理', 'krc' ),
+			'name'                  => __( '在籍女性', 'krc' ),
+			'singular_name'         => __( '在籍女性', 'krc' ),
+			'add_new'               => __( '在籍女性新規登録', 'krc' ),
+			'add_new_item'          => __( '在籍女性新規登録', 'krc' ),
+			'edit_item'             => __( '在籍女性登録内容編集', 'krc' ),
+			'new_item'              => __( '在籍女性新規登録', 'krc' ),
+			'all_items'             => __( '在籍女性管理', 'krc' ),
 			'view_item'             => __( '表示確認', 'krc' ),
 			'search_items'          => __( '検索', 'krc' ),
 			'not_found'             => __( '見つかりません', 'krc' ),
@@ -61,7 +61,7 @@ class Krc_Model_Casts {
 		$args = array(
 			'labels'                => $labels,
 			'hierarchical'          => true,
-			'description'           => '在席キャスト管理',
+			'description'           => '在籍女性',
 			'supports'              => array('title', 'editor', 'custom-fields'),
 			'public'                => true,
 			'show_ui'               => true,
@@ -354,7 +354,7 @@ class Krc_Model_Casts {
 			update_post_meta( $post->ID, "_krc_hips", $krc_hips );
 			update_post_meta( $post->ID, "_krc_cups", $krc_cups );
 			$krc_cast_screens = isset($_POST['h_krc_cast_screens']) ? $_POST['h_krc_cast_screens'] : "";
-			$krc_cast_screens = json_encode($krc_cast_screens);
+			$krc_cast_screens = json_encode($krc_cast_screens, JSON_UNESCAPED_UNICODE);  
 			update_post_meta($post->ID, "_krc_cast_screens", $krc_cast_screens);
 			
 		} else {

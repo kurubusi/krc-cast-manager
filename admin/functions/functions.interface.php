@@ -54,7 +54,7 @@ function optionsframework_admin_init()
  */
 function optionsframework_add_admin() {
 	
-    $of_page = add_submenu_page('edit.php?post_type=krc_cast', __('詳細設定', 'krc'), __('詳細設定', 'krc'), 'publish_posts', 'optionsframework', 'optionsframework_options_page');
+    $of_page = add_submenu_page('edit.php?post_type=cast', __('詳細設定', 'krc'), __('詳細設定', 'krc'), 'publish_posts', 'optionsframework', 'optionsframework_options_page');
 
 	// Add framework functionaily to the head individually
 	add_action("admin_print_scripts-$of_page", 'of_load_only');

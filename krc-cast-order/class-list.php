@@ -64,8 +64,8 @@ class Krc_Opt {
 		foreach( $post_types as $post_type_name ) {
 			if ($post_type_name == 'page') { continue; }
 			if ($post_type_name == 'reply' || $post_type_name == 'topic') { continue; }
-			if ($post_type_name == 'krc_cast') {
-				add_submenu_page('edit.php?post_type=krc_cast', __('表示順管理', 'krc'), __('表示順管理', 'krc'), 'publish_posts', 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
+			if ($post_type_name == 'cast') {
+				add_submenu_page('edit.php?post_type=cast', __('表示順管理', 'krc'), __('表示順管理', 'krc'), 'publish_posts', 'order-post-types-'.$post_type_name, array(&$this, 'SortPage') );
 			}
 		}
 	}

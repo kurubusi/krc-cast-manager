@@ -11,18 +11,19 @@ $jq(document).ready(function () {
 	
 	var time_popup = '<dd class="time_input"><div class="time_popup"><dl><dt><label for="遅早表記">遅早表記</label></dt><dd><select name="fastslow" class="fastslow"><option value="0">指定無</option><option value="早番">早番</option><option value="中番">中番</option><option value="遅番">遅番</option></select></dd></dl><dl><dt><label for="時間表記">時間表記</label></dt><dd><select name="starttime" class="starttime"><option value="0">指定無</option>';
 	time_popup += '<option value="OPEN">OPEN</option>';
-	for (var i = 10; i <= 26; i++) {
-		time_popup += '<option value="' + i + '時">' + i + '時</option>';
+	for (var i = 10; i <= 27; i++) {
+		time_popup += '<option value="' + i + ':00">' + i + ':00</option>';
+		time_popup += '<option value="' + i + ':30">' + i + ':30</option>';
 	}
 	time_popup += '</select><br>から</dd><dd><select name="endtime" class="endtime"><option value="0">指定無</option>';
-	for (var i = 10; i <= 26; i++) {
-		time_popup += '<option value="' + i + '時">' + i + '時</option>';
+	for (var i = 10; i <= 27; i++) {
+		time_popup += '<option value="' + i + ':00">' + i + ':00</option>';
+		time_popup += '<option value="' + i + ':30">' + i + ':30</option>';
 	}
 	time_popup += '<option value="LAST">LAST</option>';
 	time_popup += '</select></dd></dl></div></dd>';
 	
-	
-	
+
 	
 	$jq("#datepicker").datepicker({
 		'altField': '#schedule_target_day',
@@ -132,7 +133,50 @@ $jq(document).ready(function () {
 		});
 	});
 	
-	
+	$jq("#copy-schedule").bind( "click", function() {
+		$jq("html, body").animate({ scrollTop: 0 }, "fast");
+		$jq.post( ajaxurl, { action:'krc_schedule_update', order: 'copy', day: $jq("#schedule_target_day").val()}, function(data, status) {
+			$jq("#ajax-response").html('<div class="message updated fade"><p>前日の出勤データをコピーしました。</p></div>');
+			$jq("#ajax-response div").delay(3000).hide("slow");
+			
+			
+			//
+			$jq.post( ajaxurl, { action: 'krc_schedule_target_day', 'order': $jq("#schedule_target_day").val() }, function(data, status) {
+				
+				var cast_arr = $jq.parseJSON(data),
+						post_in_sort = [];
+				
+				$jq('#schedule_cast_out').empty();
+				$jq('#schedule_cast_in').empty();
+				$jq('#krc_schedule_rest').remove();
+				
+				if (cast_arr['rest'] == 'rest') {
+					//console.log($jq('#schedule_cast_in:before'));
+					$jq('#schedule_cast_in').before('<div id="krc_schedule_rest">■定休日に設定しています</div>');
+				} else {
+					
+					$jq.each(cast_arr['post_in'], function (i, val) {
+						post_in_sort[val['s_order']] = i;
+					});
+					
+					$jq.each(post_in_sort, function (i, val) {
+						$jq('#schedule_cast_in').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + val + '"><dt>' + cast_arr['post_in'][val]['krc_name'] + '</dt><dd><img src="' + cast_arr['post_in'][val]['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd>' + time_popup + '</dl>');
+						$jq('#item_' + val).find(".fastslow").val(cast_arr['post_in'][val]['fastslow']);
+						$jq('#item_' + val).find(".starttime").val(cast_arr['post_in'][val]['starttime']);
+						$jq('#item_' + val).find(".endtime").val(cast_arr['post_in'][val]['endtime']);
+					});
+				}
+				$jq.each(cast_arr['post_not_in'], function (i, val) {
+					$jq('#schedule_cast_out').append('<dl class="schedule_cast ui-sortable-handle" id="item_' + i + '"><dt>' + val['krc_name'] + '</dt><dd><img src="' + val['krc_cast_screens'] + '" width="100" class="cast_photo" /></dd></dl>');
+				});
+				
+			});
+			//
+			
+			
+		});
+		
+	});
 	
 	
 	

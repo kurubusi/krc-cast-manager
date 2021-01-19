@@ -4,6 +4,7 @@
 	<div class="h_box">
 		<h2><input type="text" id="datepicker" name="krc_datepicker" /><input type="hidden" id="schedule_target_day" name="schedule_target_day" value="{{ schedule_target_day }}" />の出勤スケジュールを登録</h2>
 		<div class="schedule_button">
+			<a href="javascript: void(0)" id="copy-schedule" class="button-primary">前日のコピー</a>　
 			<a href="javascript: void(0)" id="rest-schedule" class="button-primary">定休日</a>　
 			<a href="javascript: void(0)" id="save-schedule" class="button-primary">　スケジュールの決定　<?php __('決定', 'krc' ) ?></a>
 		</div>

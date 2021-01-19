@@ -1,0 +1,65 @@
+<input type="hidden" name="cast_meta_nonce" value="{{ cast_meta_nonce }}" />
+<table class="form-table">
+	<tr>
+		<th style=''><label for='名前'>名前 *</label></th>
+		<td><input class='widefat' name='krc_name' id='krc_name' type='text' value='{{ krc_name }}' /></td>
+	</tr>
+	<tr>
+		<th style=''><label for='年齢'>年齢</label></th>
+		<td><select class='widefat' name="krc_age" id="krc_age">
+			<option {% if krc_age == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 18..50 %}
+				<option {% if krc_age == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>	</tr>
+	<tr>
+		<th style=''><label for='身長'>身長</label></th>
+		<td><select class='widefat' name="krc_tall" id="krc_tall">
+			<option {% if krc_tall == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 140..180 %}
+				<option {% if krc_tall == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr>
+		<th style=''><label for='バスト'>バスト</label></th>
+		<td><select class='widefat' name="krc_bust" id="krc_bust">
+			<option {% if krc_bust == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 70..110 %}
+				<option {% if krc_bust == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr>
+		<th style=''><label for='ウェスト'>ウェスト</label></th>
+		<td><select class='widefat' name="krc_waist" id="krc_waist">
+			<option {% if krc_waist == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 45..80 %}
+				<option {% if krc_waist == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr>
+		<th style=''><label for='ヒップ'>ヒップ</label></th>
+		<td><select class='widefat' name="krc_hips" id="krc_hips">
+			<option {% if krc_hips == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 70..110 %}
+				<option {% if krc_hips == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr>
+		<th style=''><label for='カップ'>カップ</label></th>
+		<td><select class='widefat' name="krc_cups" id="krc_cups">
+			<option {% if krc_cups == 0 %}selected{% endif %} value="0">未選択</option>
+			{% for i in 'A'..'N' %}
+				<option {% if krc_cups == i %}selected{% endif %} value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	
+	
+	
+	
+	
+</table>

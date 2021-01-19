@@ -154,7 +154,7 @@
 	display: block;
 	height: auto;
 }
-#rest-schedule, #save-schedule {
+#rest-schedule, #save-schedule, #copy-schedule {
 	display: inline-block;
 	font-size: 18px;
 	text-align: center;
