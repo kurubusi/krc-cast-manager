@@ -24,7 +24,9 @@ class Krc_Cast_Order {
 		if (is_admin()) { return false; }
 		//if (isset($query->query['suppress_filters'])) { $query->query['suppress_filters'] = FALSE; }
 		//if (isset($query->query_vars['suppress_filters'])) { $query->query_vars['suppress_filters'] = FALSE; }
-		$query->query_vars['suppress_filters'] = FALSE;
+		if ( isset($query->query['suppress_filters']) ) {
+			$query->query_vars['suppress_filters'] = FALSE;
+		}
 		return $query;
 	}
 	
